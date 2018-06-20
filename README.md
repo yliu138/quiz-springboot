@@ -8,7 +8,7 @@ For configuration issues, refer to [this](https://stackoverflow.com/questions/43
 
 ## Spring boot explanation
 | Annotation | Meaning                                             |
-+------------+-----------------------------------------------------+
+|------------|-----------------------------------------------------|
 | @Component | generic stereotype for any Spring-managed component |
 | @Repository| stereotype for persistence layer                    |
 | @Service   | stereotype for service layer                        |
