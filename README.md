@@ -1,6 +1,6 @@
 ## How to run
 1. Run `gradle bootRun` to start up the project
-2. Open the link in the browser _http://localhost:8080_
+2. Open the link in the browser _http://localhost:8080_ to check if the spring project has successfully booted.
 
 ## Database configuration
 Go to `src/main/resources/application.properties`
