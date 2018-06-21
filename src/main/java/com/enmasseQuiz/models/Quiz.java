@@ -3,6 +3,9 @@
  */
 package com.enmasseQuiz.models;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -31,7 +34,19 @@ public abstract class Quiz {
 	@NotNull
 	protected String description;
 	@Transient
-	protected String[] answers;
+	protected List<String> answers;
+	
+//	JPA
+	protected Quiz() {
+		this.answers = new LinkedList<String>();
+	}
+	
+	public Quiz(long quizId, String quizType, String desc) {
+		this.id = quizId;
+		this.quizType = quizType;
+		this.description = desc;
+		this.answers = new LinkedList<String>();
+	}
 	
 //	Getter and setters
 	public long getId() {
@@ -52,11 +67,19 @@ public abstract class Quiz {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String[] getAnswers() {
-		return this.answers;
+	
+	public List<String> getAnswers() {
+		return answers;
 	}
-	public void setAnswers(String[] answers) {
+
+	public void setAnswers(List<String> answers) {
 		this.answers = answers;
 	}
 	
+	public void clearAnswers() {
+		this.answers = new LinkedList<String>();
+	}
+	
+//	Abstract methods
+	public abstract void appendAnswers(String ans);
 }
