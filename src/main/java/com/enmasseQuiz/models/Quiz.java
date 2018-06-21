@@ -30,9 +30,9 @@ public abstract class Quiz {
 	private long id;
 	
 	@NotNull
-	protected String quizType;
+	private String quizType;
 	@NotNull
-	protected String description;
+	private String description;
 	@Transient
 	protected List<String> answers;
 	
@@ -69,7 +69,7 @@ public abstract class Quiz {
 	}
 	
 	public List<String> getAnswers() {
-		return answers;
+		return this.answers;
 	}
 
 	public void setAnswers(List<String> answers) {
@@ -82,4 +82,9 @@ public abstract class Quiz {
 	
 //	Abstract methods
 	public abstract void appendAnswers(String ans);
+	
+	@Override
+	public String toString() {
+		return "Question Id: " + this.id + "\nContent: " + this.description + "\nQuiz type: " + this.quizType;
+	}
 }
