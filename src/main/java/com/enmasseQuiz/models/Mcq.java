@@ -4,7 +4,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("mcq")
+@DiscriminatorValue("MCQ")
 public class Mcq extends Quiz {
 	
 	public Mcq(long quizId, String quizType, String desc) {

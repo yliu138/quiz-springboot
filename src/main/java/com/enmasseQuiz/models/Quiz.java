@@ -7,22 +7,25 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.DiscriminatorFormula;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@MappedSuperclass
+@Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="quizType")
+@DiscriminatorFormula(
+		"CASE WHEN quizType='mcq' THEN 'MCQ' " +
+		"WHEN quizType='paragraph' THEN 'PARAGRAPH' END"
+)
 public abstract class Quiz {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

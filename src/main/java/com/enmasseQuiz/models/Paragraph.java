@@ -13,7 +13,7 @@ import javax.persistence.Entity;
  *
  */
 @Entity
-@DiscriminatorValue("paragraph")
+@DiscriminatorValue("PARAGRAPH")
 public class Paragraph extends Quiz {
 
 //	didn't do anything here as the paragraph quiz won't have any answers
