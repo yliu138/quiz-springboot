@@ -1,5 +1,6 @@
 insert into quiz(description, quizType) values ('What is the MVP in the Germany national football team', 'mcq');
-insert into quiz(description, quizType) values ('Which country listed below is the host of 2018 world cup', 'paragraph');
+insert into quiz(description, quizType) values ('Which country listed below is the host of 2018 world cup', 'mcq');
+insert into quiz(description, quizType) values ('Comment on the Germanys performance', 'paragraph');
 
 insert into answer(content) values('Kloze');
 insert into answer(content) values('Maze');
