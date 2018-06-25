@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 @DiscriminatorValue("MCQ")
 public class Mcq extends Quiz {
 	
-	public Mcq(long quizId, String quizType, String desc) {
-		super(quizId, quizType, desc);
+	public Mcq(String quizType, String desc) {
+		super(quizType, desc);
 	}
 	
 	@SuppressWarnings("unused")
@@ -17,7 +17,7 @@ public class Mcq extends Quiz {
 	}
 	
 	@Override
-	public void appendAnswers(String ans) {
-		this.answers.add(ans);
+	public String toString() {
+		return "MCQ: " + super.toString();
 	}
 }

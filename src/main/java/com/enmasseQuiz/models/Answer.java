@@ -68,9 +68,19 @@ public class Answer {
 		return id;
 	}
 
+	
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+	public List<QuizHasAnswer> getQuizes() {
+		return quizes;
+	}
+
+	public void setQuizes(List<QuizHasAnswer> quizes) {
+		this.quizes = quizes;
+	}
+
 
 	public String getContent() {
 		return content;
