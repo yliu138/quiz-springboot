@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.enmasseQuiz.models.Quiz;
+import com.enmasseQuiz.models.Question;
 import com.enmasseQuiz.repos.QuizRepo;
 
 /**
@@ -23,7 +23,7 @@ public class QuizCommandRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("=== Available services: ");
-		for (Quiz q: this.quizRepo.findAll()) {
+		for (Question q: this.quizRepo.findAll()) {
 			System.out.println(q);
 		}
 

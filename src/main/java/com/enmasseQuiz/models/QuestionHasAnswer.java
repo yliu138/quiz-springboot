@@ -19,16 +19,16 @@ import javax.validation.constraints.NotNull;
  * @author leoliu
  *
  */
-@Entity(name = "QuizHasAnswer")
-@Table(name = "quiz_has_answer")
-public class QuizHasAnswer {
+@Entity(name = "QuestionHasAnswer")
+@Table(name = "question_has_answer")
+public class QuestionHasAnswer {
 	
 	@EmbeddedId
-	private QuizHasAnswerId id;
+	private QuestionHasAnswerId id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@MapsId("quizId")
-	private Quiz quiz;
+	@MapsId("questionId")
+	private Question question;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@MapsId("answerId")
@@ -39,30 +39,30 @@ public class QuizHasAnswer {
 	private boolean isCorrect;
 	
 	@SuppressWarnings("unused")
-	private QuizHasAnswer() {}
+	private QuestionHasAnswer() {}
 
-	public QuizHasAnswer(Quiz quiz, Answer answer, boolean isCorrect) {
-		this.quiz = quiz;
+	public QuestionHasAnswer(Question question, Answer answer, boolean isCorrect) {
+		this.question = question;
 		this.answer = answer;
 		this.isCorrect = isCorrect;
-		this.id = new QuizHasAnswerId(quiz.getId(), answer.getId());
+		this.id = new QuestionHasAnswerId(question.getId(), answer.getId());
 	}
 
 //	Getters and setters
-	public QuizHasAnswerId getId() {
+	public QuestionHasAnswerId getId() {
 		return id;
 	}
 
-	public void setId(QuizHasAnswerId id) {
+	public void setId(QuestionHasAnswerId id) {
 		this.id = id;
 	}
 
-	public Quiz getQuiz() {
-		return quiz;
+	public Question getQuestion() {
+		return question;
 	}
 
-	public void setQuiz(Quiz quiz) {
-		this.quiz = quiz;
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 
 	public Answer getAnswer() {
@@ -83,7 +83,7 @@ public class QuizHasAnswer {
 
 	@Override
 	public String toString() {
-		return "QuizHasAnswer [id=" + id + ", quiz=" + quiz + ", answer=" + answer + ", isCorrect=" + isCorrect + "]";
+		return "QuestionHasAnswer [id=" + id + ", question=" + question + ", answer=" + answer + ", isCorrect=" + isCorrect + "]";
 	}
 
 	@Override
@@ -93,13 +93,13 @@ public class QuizHasAnswer {
         if (o == null || getClass() != o.getClass())
             return false;
  
-        QuizHasAnswer that = (QuizHasAnswer) o;
-        return Objects.equals(this.quiz, that.quiz) &&
+        QuestionHasAnswer that = (QuestionHasAnswer) o;
+        return Objects.equals(this.question, that.question) &&
         		Objects.equals(this.answer, that.answer);
     }
  
     @Override
     public int hashCode() {
-        return Objects.hash(this.quiz, this.answer);
+        return Objects.hash(this.question, this.answer);
     }
 }

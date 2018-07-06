@@ -55,7 +55,7 @@ public class Answer {
 		cascade = CascadeType.ALL,
 		orphanRemoval = true
 	)
-	private List<QuizHasAnswer> quizes = new ArrayList<QuizHasAnswer>();
+	private List<QuestionHasAnswer> questions = new ArrayList<QuestionHasAnswer>();
 	
 	@SuppressWarnings("unused")
 	private Answer() {}
@@ -73,12 +73,12 @@ public class Answer {
 		this.id = id;
 	}
 	
-	public List<QuizHasAnswer> getQuizes() {
-		return quizes;
+	public List<QuestionHasAnswer> getQuestions() {
+		return questions;
 	}
 
-	public void setQuizes(List<QuizHasAnswer> quizes) {
-		this.quizes = quizes;
+	public void setQuestions(List<QuestionHasAnswer> questions) {
+		this.questions = questions;
 	}
 
 
@@ -105,6 +105,6 @@ public class Answer {
 
 	@Override
 	public String toString() {
-		return "Answer [id=" + id + ", content=" + content + ", quizes=" + quizes + "]";
+		return "Answer [id=" + id + ", content=" + content + ", quizes=" + this.questions + "]";
 	}
 }

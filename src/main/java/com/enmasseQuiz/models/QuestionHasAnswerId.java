@@ -15,19 +15,19 @@ import javax.persistence.Embeddable;
  */
 @SuppressWarnings("serial")
 @Embeddable
-public class QuizHasAnswerId implements Serializable {
-	@Column(name = "quiz_id")
-	private long quizId;
+public class QuestionHasAnswerId implements Serializable {
+	@Column(name = "question_id")
+	private long questionId;
 	
 	@Column(name = "answer_id")
 	private long answerId;
 	
 //	JPA
 	@SuppressWarnings("unused")
-	private QuizHasAnswerId() {}
+	private QuestionHasAnswerId() {}
 
-	public QuizHasAnswerId(long quizId, long answerId) {
-		this.quizId = quizId;
+	public QuestionHasAnswerId(long questionId, long answerId) {
+		this.questionId = questionId;
 		this.answerId = answerId;
 	}
 	
@@ -39,13 +39,13 @@ public class QuizHasAnswerId implements Serializable {
         if (o == null || getClass() != o.getClass()) 
             return false;
  
-        QuizHasAnswerId that = (QuizHasAnswerId) o;
-        return Objects.equals(this.quizId, that.quizId) && 
+        QuestionHasAnswerId that = (QuestionHasAnswerId) o;
+        return Objects.equals(this.questionId, that.questionId) && 
                Objects.equals(this.answerId, that.answerId);
     }
 	
 	@Override
     public int hashCode() {
-        return Objects.hash(this.quizId, this.answerId);
+        return Objects.hash(this.questionId, this.answerId);
     }
 }

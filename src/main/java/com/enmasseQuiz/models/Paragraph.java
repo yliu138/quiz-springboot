@@ -14,7 +14,7 @@ import javax.persistence.Entity;
  */
 @Entity
 @DiscriminatorValue("PARAGRAPH")
-public class Paragraph extends Quiz {
+public class Paragraph extends Question {
 
 //	didn't do anything here as the paragraph quiz won't have any answers
 	@Override
@@ -23,7 +23,7 @@ public class Paragraph extends Quiz {
 	}
 	
 	@Override
-	public void setAnswers(List<QuizHasAnswer> answers) {
+	public void setAnswers(List<QuestionHasAnswer> answers) {
 		//Do nothing here
 	}
 	

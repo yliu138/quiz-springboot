@@ -10,15 +10,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.enmasseQuiz.models.Quiz;
+import com.enmasseQuiz.models.Question;
 
 /**
  * @author leoliu
  *
  */
 @Repository
-public interface QuizRepo extends JpaRepository<Quiz, Long>{
-	public List<Quiz> findQuizByQuizType(String quizType);
+public interface QuizRepo extends JpaRepository<Question, Long>{
+	public List<Question> findQuizByQuizType(String quizType);
 	
 //	@Query(value = "SELECT * FROM quiz q where q.id = :id",
 //			nativeQuery = true)

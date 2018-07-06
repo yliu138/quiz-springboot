@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("MCQ")
-public class Mcq extends Quiz {
+public class Mcq extends Question {
 	
 	public Mcq(String quizType, String desc) {
 		super(quizType, desc);

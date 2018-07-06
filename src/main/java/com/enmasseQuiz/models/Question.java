@@ -22,14 +22,14 @@ import org.hibernate.annotations.DiscriminatorFormula;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity(name = "Quiz")
-@Table(name = "quiz")
+@Entity(name = "Question")
+@Table(name = "question")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorFormula(
-		"CASE WHEN quiz_type='mcq' THEN 'MCQ' " +
-		"WHEN quiz_type='paragraph' THEN 'PARAGRAPH' END"
+		"CASE WHEN question_type='mcq' THEN 'MCQ' " +
+		"WHEN question_type='paragraph' THEN 'PARAGRAPH' END"
 )
-public abstract class Quiz {
+public abstract class Question {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, unique = true)
@@ -37,22 +37,22 @@ public abstract class Quiz {
 	private long id;
 	
 	@NotNull
-	@Column(name = "quiz_type")
-	private String quizType;
+	@Column(name = "question_type")
+	private String questionType;
 	@NotNull
 	private String description;
 	@OneToMany(
-		mappedBy = "quiz",
+		mappedBy = "question",
 		cascade = CascadeType.ALL,
 		orphanRemoval = true
 	)
-	protected List<QuizHasAnswer> answers = new LinkedList<QuizHasAnswer>();
+	protected List<QuestionHasAnswer> answers = new LinkedList<QuestionHasAnswer>();
 	
 //	JPA
-	protected Quiz() {}
+	protected Question() {}
 	
-	public Quiz(String quizType, String desc) {
-		this.quizType = quizType;
+	public Question(String questionType, String desc) {
+		this.questionType = questionType;
 		this.description = desc;
 	}
 	
@@ -64,11 +64,11 @@ public abstract class Quiz {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getQuizType() {
-		return this.quizType;
+	public String getquestionType() {
+		return this.questionType;
 	}
-	public void setQuizType(String quizType) {
-		this.quizType = quizType;
+	public void setquestionType(String questionType) {
+		this.questionType = questionType;
 	}
 	public String getDescription() {
 		return this.description;
@@ -77,26 +77,26 @@ public abstract class Quiz {
 		this.description = description;
 	}
 	
-	public List<QuizHasAnswer> getAnswers() {
+	public List<QuestionHasAnswer> getAnswers() {
 		return answers;
 	}
 
-	public void setAnswers(List<QuizHasAnswer> answers) {
+	public void setAnswers(List<QuestionHasAnswer> answers) {
 		this.answers = answers;
 	}
 	
 	public void clearAnswers() {
-		this.answers = new LinkedList<QuizHasAnswer>();
+		this.answers = new LinkedList<QuestionHasAnswer>();
 	}
 	
 	public void appendAnswers(Answer ans, boolean isCorrect) {
-		QuizHasAnswer qha = new QuizHasAnswer(this, ans, isCorrect);
+		QuestionHasAnswer qha = new QuestionHasAnswer(this, ans, isCorrect);
 		this.answers.add(qha);
-		ans.getQuizes().add(qha);
+		ans.getQuestions().add(qha);
 	}
 	
 	@Override
 	public String toString() {
-		return "Question Id: " + this.id + "\nContent: " + this.description + "\nQuiz type: " + this.quizType;
+		return "Question Id: " + this.id + "\nContent: " + this.description + "\nquestion type: " + this.questionType;
 	}
 }
