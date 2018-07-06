@@ -26,8 +26,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "quiz")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorFormula(
-		"CASE WHEN quizType='mcq' THEN 'MCQ' " +
-		"WHEN quizType='paragraph' THEN 'PARAGRAPH' END"
+		"CASE WHEN quiz_type='mcq' THEN 'MCQ' " +
+		"WHEN quiz_type='paragraph' THEN 'PARAGRAPH' END"
 )
 public abstract class Quiz {
 	@Id
@@ -37,6 +37,7 @@ public abstract class Quiz {
 	private long id;
 	
 	@NotNull
+	@Column(name = "quiz_type")
 	private String quizType;
 	@NotNull
 	private String description;
