@@ -27,7 +27,7 @@ public class QuizCommandRunner implements CommandLineRunner {
 			System.out.println(q);
 		}
 
-		System.out.println(this.questionRepo.findQuestionByQuestionType("mcq"));
+//		System.out.println(this.questionRepo.getQuestionByQuestionId(1));
 
 	}
 	
