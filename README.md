@@ -17,3 +17,5 @@ For configuration issues, refer to [this](https://stackoverflow.com/questions/43
 
 ## Issues and resolutions
 1. [External database rather than in-memory DB configuration](https://stackoverflow.com/questions/43249308/cant-create-a-mysql-database-using-spring-boot)
+
+2. [Initialize the database with schema and data](https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data)
