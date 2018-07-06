@@ -8,7 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.enmasseQuiz.models.Question;
-import com.enmasseQuiz.repos.QuizRepo;
+import com.enmasseQuiz.repos.QuestionRepo;
 
 /**
  * @author leoliu
@@ -18,16 +18,16 @@ import com.enmasseQuiz.repos.QuizRepo;
 public class QuizCommandRunner implements CommandLineRunner {
 	
 	@Autowired
-	QuizRepo quizRepo;
+	QuestionRepo questionRepo;
 	
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("=== Available services: ");
-		for (Question q: this.quizRepo.findAll()) {
+		for (Question q: this.questionRepo.findAll()) {
 			System.out.println(q);
 		}
 
-		System.out.println(this.quizRepo.findQuizByQuizType("mcq"));
+		System.out.println(this.questionRepo.findQuestionByQuestionType("mcq"));
 
 	}
 	

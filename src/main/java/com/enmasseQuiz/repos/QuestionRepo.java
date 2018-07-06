@@ -17,8 +17,8 @@ import com.enmasseQuiz.models.Question;
  *
  */
 @Repository
-public interface QuizRepo extends JpaRepository<Question, Long>{
-	public List<Question> findQuizByQuizType(String quizType);
+public interface QuestionRepo extends JpaRepository<Question, Long>{
+	public List<Question> findQuestionByQuestionType(String questionType);
 	
 //	@Query(value = "SELECT * FROM quiz q where q.id = :id",
 //			nativeQuery = true)
