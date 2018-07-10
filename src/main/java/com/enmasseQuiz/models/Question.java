@@ -97,6 +97,6 @@ public abstract class Question {
 	
 	@Override
 	public String toString() {
-		return "Question Id: " + this.id + "\nContent: " + this.description + "\nquestion type: " + this.questionType;
+		return "Question Id: " + this.id + "\nContent: " + this.description + "\nquestion type: " + this.questionType + "\nAnswers: " + this.answers;
 	}
 }

@@ -26,9 +26,8 @@ public class QuizCommandRunner implements CommandLineRunner {
 		for (Question q: this.questionRepo.findAll()) {
 			System.out.println(q);
 		}
-
-//		System.out.println(this.questionRepo.getQuestionByQuestionId(1));
-
+		
+		System.out.println(this.questionRepo.findByDescAndTitle("MVP", "mcq"));
 	}
 	
 }

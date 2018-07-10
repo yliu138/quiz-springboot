@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 @DiscriminatorValue("MCQ")
 public class Mcq extends Question {
 	
-	public Mcq(String quizType, String desc) {
-		super(quizType, desc);
+	public Mcq(String quesType, String desc) {
+		super(quesType, desc);
 	}
 	
 	@SuppressWarnings("unused")

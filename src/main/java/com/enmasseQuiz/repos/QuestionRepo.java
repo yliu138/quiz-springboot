@@ -4,6 +4,7 @@
 package com.enmasseQuiz.repos;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,7 +21,7 @@ import com.enmasseQuiz.models.Question;
 public interface QuestionRepo extends JpaRepository<Question, Long>{
 	public List<Question> findQuestionByQuestionType(String questionType);
 	
-	@Query(value = "SELECT * FROM question q where q.id = :id",
-			nativeQuery = true)
-	public Question getQuestionByQuestionId(@Param("id") long id);
+	@Query("select q from Question q where q.description like %:desc% and q.questionType = :type")
+	public List<Question> findByDescAndTitle(@Param("desc") String desc,
+												 @Param("type") String type);
 }
