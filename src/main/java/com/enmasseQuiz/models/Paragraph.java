@@ -18,12 +18,12 @@ public class Paragraph extends Question {
 
 //	didn't do anything here as the paragraph quiz won't have any answers
 	@Override
-	public void appendAnswers(Answer ans, boolean isCorrect) {
+	public void appendQuestionHasAnswer(Answer ans, boolean isCorrect) {
 		//do nothing here
 	}
 	
 	@Override
-	public void setAnswers(List<QuestionHasAnswer> answers) {
+	public void setQuestionHasAnswer(List<QuestionHasAnswer> answers) {
 		//Do nothing here
 	}
 	

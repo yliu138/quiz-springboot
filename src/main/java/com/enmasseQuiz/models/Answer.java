@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -51,17 +50,16 @@ public class Answer {
 	private String content;
 	
 	@OneToMany(
-		mappedBy = "answer",
-		cascade = CascadeType.ALL,
-		orphanRemoval = true
+		mappedBy = "answer"
 	)
-	private List<QuestionHasAnswer> questions = new ArrayList<QuestionHasAnswer>();
+	private List<QuestionHasAnswer> questionHasAnswer;
 	
 	@SuppressWarnings("unused")
 	private Answer() {}
 
 	public Answer(String content) {
 		this.content = content;
+		this.questionHasAnswer = new ArrayList<QuestionHasAnswer>();
 	}
 
 	public long getId() {
@@ -74,11 +72,11 @@ public class Answer {
 	}
 	
 	public List<QuestionHasAnswer> getQuestions() {
-		return questions;
+		return questionHasAnswer;
 	}
 
-	public void setQuestions(List<QuestionHasAnswer> questions) {
-		this.questions = questions;
+	public void setQuestions(List<QuestionHasAnswer> questionHasAnswer) {
+		this.questionHasAnswer = questionHasAnswer;
 	}
 
 
@@ -105,6 +103,6 @@ public class Answer {
 
 	@Override
 	public String toString() {
-		return "Answer [id=" + id + ", content=" + content + ", quizes=" + this.questions + "]";
+		return "Answer [id=" + id + ", content=" + content + ", quizes=" + this.questionHasAnswer + "]";
 	}
 }

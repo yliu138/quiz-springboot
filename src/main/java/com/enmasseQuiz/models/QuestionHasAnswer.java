@@ -3,15 +3,14 @@
  */
 package com.enmasseQuiz.models;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -21,17 +20,22 @@ import javax.validation.constraints.NotNull;
  */
 @Entity(name = "QuestionHasAnswer")
 @Table(name = "question_has_answer")
-public class QuestionHasAnswer {
+public class QuestionHasAnswer implements Serializable {
 	
-	@EmbeddedId
-	private QuestionHasAnswerId id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@MapsId("questionId")
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@ManyToOne
+	@JoinColumn(name = "question_id")
 	private Question question;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@MapsId("answerId")
+	@Id
+	@ManyToOne
+	@JoinColumn(name = "answer_id")
 	private Answer answer;
 	
 	@NotNull
@@ -45,18 +49,9 @@ public class QuestionHasAnswer {
 		this.question = question;
 		this.answer = answer;
 		this.isCorrect = isCorrect;
-		this.id = new QuestionHasAnswerId(question.getId(), answer.getId());
 	}
 
 //	Getters and setters
-	public QuestionHasAnswerId getId() {
-		return id;
-	}
-
-	public void setId(QuestionHasAnswerId id) {
-		this.id = id;
-	}
-
 	public Question getQuestion() {
 		return question;
 	}
@@ -83,7 +78,7 @@ public class QuestionHasAnswer {
 
 	@Override
 	public String toString() {
-		return "QuestionHasAnswer [id=" + id + ", question=" + question + ", answer=" + answer + ", isCorrect=" + isCorrect + "]";
+		return "QuestionHasAnswer [question=" + question + ", answer=" + answer + ", isCorrect=" + isCorrect + "]";
 	}
 
 	@Override

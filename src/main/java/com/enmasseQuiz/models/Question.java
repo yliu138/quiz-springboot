@@ -46,7 +46,7 @@ public abstract class Question {
 		cascade = CascadeType.ALL,
 		orphanRemoval = true
 	)
-	protected List<QuestionHasAnswer> answers = new LinkedList<QuestionHasAnswer>();
+	protected List<QuestionHasAnswer> questionHasAnswer;
 	
 //	JPA
 	protected Question() {}
@@ -54,6 +54,7 @@ public abstract class Question {
 	public Question(String questionType, String desc) {
 		this.questionType = questionType;
 		this.description = desc;
+		this.questionHasAnswer = new LinkedList<QuestionHasAnswer>();
 	}
 	
 //	Getter and setters
@@ -64,10 +65,10 @@ public abstract class Question {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getquestionType() {
+	public String getQuestionType() {
 		return this.questionType;
 	}
-	public void setquestionType(String questionType) {
+	public void setQuestionType(String questionType) {
 		this.questionType = questionType;
 	}
 	public String getDescription() {
@@ -77,26 +78,26 @@ public abstract class Question {
 		this.description = description;
 	}
 	
-	public List<QuestionHasAnswer> getAnswers() {
-		return answers;
+	public List<QuestionHasAnswer> getQuestionHasAnswer() {
+		return questionHasAnswer;
 	}
 
-	public void setAnswers(List<QuestionHasAnswer> answers) {
-		this.answers = answers;
+	public void setQuestionHasAnswer(List<QuestionHasAnswer> questionHasAnswer) {
+		this.questionHasAnswer = questionHasAnswer;
 	}
 	
-	public void clearAnswers() {
-		this.answers = new LinkedList<QuestionHasAnswer>();
+	public void clearQuestionHasAnswer() {
+		this.questionHasAnswer = new LinkedList<QuestionHasAnswer>();
 	}
 	
-	public void appendAnswers(Answer ans, boolean isCorrect) {
+	public void appendQuestionHasAnswer(Answer ans, boolean isCorrect) {
 		QuestionHasAnswer qha = new QuestionHasAnswer(this, ans, isCorrect);
-		this.answers.add(qha);
+		this.questionHasAnswer.add(qha);
 		ans.getQuestions().add(qha);
 	}
 	
 	@Override
 	public String toString() {
-		return "Question Id: " + this.id + "\nContent: " + this.description + "\nquestion type: " + this.questionType + "\nAnswers: " + this.answers;
+		return "Question Id: " + this.id + "\nContent: " + this.description + "\nquestion type: " + this.questionType + "\nquestionHasAnswer: " + this.questionHasAnswer;
 	}
 }
